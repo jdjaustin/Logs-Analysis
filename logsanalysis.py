@@ -5,13 +5,22 @@ import psycopg2
 #define question titles and SQL queries
 
 articleQueryTitle=("What are the most popular three articles of all time?")
-articleQuery=("select title, count(*) as num from articles,log where log.path like concat('/article/',articles.slug) group by articles.title order by num desc limit 3")
+articleQuery=("select title, count(*) as num from articles,log "
+	"where log.path like concat('/article/',articles.slug) "
+	"group by articles.title order by num desc limit 3")
 
 authorQueryTitle=("Who are the most popular article authors of all time?")
-authorQuery=("select authors.name, count(*) as num from articles join authors on articles.author=authors.id join log on log.path=concat('/article/',articles.slug) group by authors.name order by num desc limit 3")
+authorQuery=("select authors.name, count(*) as num from articles "
+	"join authors on articles.author=authors.id "
+	"join log on log.path=concat('/article/',articles.slug) "
+	"group by authors.name order by num desc limit 3")
 
 errorQueryTitle=("On which days did more than 1% of requests lead to errors?")
-errorQuery=("select * from (select hittable.day, round(cast((100*errortable.errors) as numeric)/cast(hittable.hits as numeric),2) as percentage from (select date(time) as day, count(*) as hits from log group by day) as hittable join (select date(time) as day, count(*) as errors from log where status like '%404%' group by day) as errortable on hittable.day=errortable.day) as y where percentage>=1")
+errorQuery=("select * from (select hittable.day,"
+	"round(cast((100*errortable.errors) as numeric)/cast(hittable.hits as numeric),2) as percentage "
+	"from (select date(time) as day, count(*) as hits from log group by day) as hittable "
+	"join (select date(time) as day, count(*) as errors from log where status like '%404%' group by day) "
+	"as errortable on hittable.day=errortable.day) as y where percentage>=1")
 
 #define functions to fetch data and print results
 
