@@ -4,7 +4,7 @@
  
  ## Setup
  
- Follow the steps in the Udacity course module to install VirtualBox and Vagrant, and to start the Vagrant VM. Also download the `newsdata.sql` file from the Udacity course module and place the file into the shared `vagrant` directory. In my instance, after I launched a vagrant session using `vagrant ssh`, I was defaulted into the wrong `/vagrant` directory and had to `cd ..` a couple times back into the root directory to find the shared `/vagrant` directory, so be on the lookout for this issue. When you are in the correct directory with the `newsdata.sql` file, run `psql -d news -f newsdata.sql` to create the tables and populate the data into the `news` database.
+ Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](http://downloads.vagrantup.com/). Start the Vagrant VM by opening a terminal (I suggest using [Git Bash](https://git-scm.com/downloads)), then `cd` to the vagrant directory and run `vagrant up`. Currently, a working version of Python 2 is installed by default, but if you need to install Python, run `sudo apt install python2.7 python-pip`. Also download the `newsdata.sql` file from [this link](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip) and place the file into the shared `vagrant` directory. In my instance, after I launched a vagrant session using `vagrant ssh`, I was defaulted into the wrong `/vagrant` directory and had to `cd ..` a couple times back into the root directory to find the shared `/vagrant` directory, so be on the lookout for this issue. When you are in the correct directory with the `newsdata.sql` file, run `psql -d news -f newsdata.sql` to create the tables and populate the data into the `news` database.
  
  ## Generating Results
  
